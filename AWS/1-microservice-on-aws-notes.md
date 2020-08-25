@@ -1,13 +1,21 @@
 # Cloud computing
 
+From: https://fr.wikipedia.org/wiki/Cloud_computing
+
 Le cloud computing en français l'informatique en nuage, correspond à l’accès à des services informatiques (serveurs, stockage, mise en réseau, logiciels) 
 via Internet (le « cloud » ou « nuage ») à partir d’un fournisseur.
 
-- Scalability and elaticity
-- Locality 
-- Availability
-- Security 
-- multitenancy
+
+Advantages listed here: https://en.wikipedia.org/wiki/Cloud_computing, my favourite one with my inputs
+
+- No CAPEX, only OPEX (no initila cost, can pay when make money)
+- Scalability and elasticity (+serverless later -> pay what you actually really use/need)
+- Locality (for faster response or legal reasons)
+- Availability: use of multiple redundant sites, which makes well-designed cloud computing suitable for business continuity and disaster recovery.
+- Security: centralize security effort 
+- multitenancy: share resource and cost across several users -> centralization of infrastructure in locations with lower costs (such as real estate, electricity, etc.)
+
+<!-- aws prep step 2, => question completing this response-->
 
 # Microservices on AWS Whitepaper
  
