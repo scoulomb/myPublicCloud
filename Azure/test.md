@@ -1,6 +1,13 @@
 # Test AZ 900
 
 
+## Learning resource
+
+- https://docs.microsoft.com/fr-fr/learn/certifications/exams/az-900 <3 ++ 
+- https://www.microsoftpressstore.com/store/exam-ref-az-900-microsoft-azure-fundamentals-9780136877189 <3 ++
+- https://www.linkedin.com/learning/paths/prepare-for-the-microsoft-azure-fundamentals-exam-az-900?u=75507506 (clearly not the best)
+- https://app.pluralsight.com/paths/certificate/microsoft-azure-fundamentals-az-900 (ok)
+
 ## Attempts - esi
 
 Test failed 50% with 48 question
