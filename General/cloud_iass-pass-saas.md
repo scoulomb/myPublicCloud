@@ -54,6 +54,9 @@ We can also have auto-scaling.
     - Serverless: User does not have access/visibility to server. They are managed by service provider on behalf of customers. When app is not used, no ressouce is allocated to application.
     - FaaS: If offers possibility for dev to create software function in the cloud with event driven computing. It does not require server to constantly run, we pay for function execution time
 
+
+<!-- we could say FaaS is a subset of serverless as when using FaaS, provider manage infra and also oppose them -->
+
 ## Container Orchestration
 
 **K8s is not a all-inclusive PaaS and OpenShift is PaaS**
@@ -115,45 +118,52 @@ We can also use a private cloud for this.
 
 ### Overview 
 
-| Layer                       | Compute                                                                            |
-| --------------------------- | -----------------------------------------------------------------------------------|
-| IaaS                        | Azure VM, AWS EC2                                                                  |
-| PaaS with @ to managed nodes| Azure AKS, AWS EK(8s)S, AWS EC(container)S, Azure App Svc                          |                 
-| Serverless                  | Azure ACI (container instance) ,Fargate AWS EKS, Fargate AWS ECS, Google cloud run |
-| FaaS                        | Azure function, AWS lambda, Azure logic Apps                                       | 
+| Layer                       | Compute                                                               |
+| --------------------------- | ----------------------------------------------------------------------|
+| IaaS                        | **Azure VM**, AWS EC2                                                 |
+| PaaS with @ to managed nodes| **Azure AKS**, AWS EK(8s)S, AWS EC(container)S,  AWS elasticbeanstalk |                            
+| Serverless                  | **Azure ACI (container instance)**, Fargate AWS EKS, Fargate AWS ECS, Google cloud run, **Azure App svc** |
+| FaaS                        | **Azure function**, AWS lambda, **Azure logic Apps**                   |                                    
 
 
 ### Comments
 
-Note several serverless service have a cold start (close to FaaS)
+- Note several serverless service have a cold start (close to FaaS)
 
-Proof app service is a PaaS with access to mamaged nodes: https://docs.microsoft.com/en-us/azure/app-service/overview
+- Azure App Service is a PaaS with no access to mamaged nodes: https://docs.microsoft.com/en-us/azure/app-service/overview
 > With App Service, you pay for the Azure compute resources you use. The compute resources you use are determined by the App Service plan that you run your apps on. For more information, see Azure App Service plans overview.
-And similarly for elastic bean elasticbeanstalk
+We have concept of App Service Plan: https://docs.microsoft.com/en-us/azure/app-service/overview-hosting-plans
+> In App Service (Web Apps, API Apps, or Mobile Apps), an app always runs in an App Service plan. In addition, Azure Functions also has the option of running in an App Service plan. An App Service plan defines a set of compute resources for a web app to run. These compute resources are analogous to the server farm in conventional web hosting (behind we have VM and configure their size).
+Similar to AWS elasticbeanstalk but here we have access to Nodes
 https://docs.aws.amazon.com//latest/dg/using-features.ec2connect.html
 
-Proof we have access to ec2 instance when not [using Fargate](#AWS_Fargate) in AWS EKS and ECS
+- AWS Elastic Beanstalk(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html) and [Azure app service]( https://azure.microsoft.com/en-us/services/app-service/containers/#demo) both supports Docker and are similar services.
+
+
+- Proof we have access to ec2 instance when not [using Fargate](#AWS_Fargate) in AWS EKS and ECS
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html
 https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html
 
 This quotes shows nodes are managed
 > Yes – If you deployed an Amazon EKS optimized AMI, then you're notified in the Amazon EKS console when updates are available and can perform the update with one click in the console. If you deployed a custom AMI, then you're not notified in the Amazon EKS console when updates are available and must perform the update yourself
 
-AWS ECS and AWS EKS are available with FARGATE.
+- AWS ECS and AWS EKS are available with FARGATE.
 - https://aws.amazon.com/about-aws/whats-new/2019/12/run-serverless-kubernetes-pods-using-amazon-eks-and-aws-fargate/?nc1=h_ls
 - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html
 Unlike AWS ECS and EKS without Fargate we have no access to EC2 instance behind.
 
 Fargate AWS ECS (https://aws.amazon.com/ecs/?nc1=h_ls) and Azure container instance (https://azure.microsoft.com/en-us/services/container-instances/#overview) and Google cloud run are similar. Those are serverless CaaS.
 
-ACI is serverless https://docs.microsoft.com/en-us/azure/container-instances/ unlke AKS, see https://docs.microsoft.com/fr-fr/azure/aks/ssh 
+- Azure ACI is serverless https://docs.microsoft.com/en-us/azure/container-instances/ unlike Azure AKS, see https://docs.microsoft.com/fr-fr/azure/aks/ssh 
+If we deploy AKS we will have a VM scale set and can connect to VM (it is not visible in VM azure console)
+When deploying though it is serverless we can choose VM size. 
 
-AWS Elastic Beanstalk(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html) and [Azure app service]( https://azure.microsoft.com/en-us/services/app-service/containers/#demo) both supports Docker and are similar services.
-
-
-Here Fargate vs Lambda ([or serverless vs FaaS](From-IasS-to-serverless-PaaS)): https://www.trek10.com/blog/is-fargate-serverless
+- Here Fargate vs Lambda ([or serverless vs FaaS](From-IasS-to-serverless-PaaS)): https://www.trek10.com/blog/is-fargate-serverless
 > Don’t let the word “serverless” confuse you: Fargate is fundamentally just less infrastructure; Lambda-based “serverless” confers benefits to your business on a scale that Fargate simply can’t touch.
 
+- Note managed services can deploy other resources:
+App service deploy app service plan,  log analytics workspace, application insigths.
+AKS deployd ip address,nsg, route table, vm scale set (even when nodes are fixed), vnet, Solution (container insight for logs), load balancer, netowrk watcher, managed identity x2, k8s svc. ACI deploy only container instance. 
 
 ### A note on Azure compute service
 
@@ -164,7 +174,7 @@ Azure compute has (slide 3)
     - We managed node but can use template image (we will have to manage nodes, patch etc)
     - it is a pay as you go model
 - Containers (PaaS, CaaS)
-    - AKS (we can access nodes but they are managed by platform including software patch, it is not serverless)
+    - AKS (we can access nodes (VM scale set) but they are managed by platform including software patch, it is not serverless)
     - ACI (serverless CaaS: we can NOT access nodes and they are managed for us)
         - https://medium.com/asos-techblog/serverless-on-azure-b12bc282304a
         - https://docs.microsoft.com/en-us/azure/container-instances/container-instances-overview
@@ -189,7 +199,7 @@ and it can be kube/docker compose in first 3 options
 - Launch a docker via job API 
 
 
-[HERE CONFIRMED OK]
+[HERE CONFIRMED OK all above yes, reconfirmed just do db clear OK YES reconfirmed start on db only after fix 3 PM 8nov OK]
 
 ## Cloud provider database service overview 
 
@@ -217,3 +227,5 @@ https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.htm
 
 
 https://servian.dev/azure-az-900-exam-preparation-guide-how-to-pass-in-3-days-dabf5534507a 
+
+

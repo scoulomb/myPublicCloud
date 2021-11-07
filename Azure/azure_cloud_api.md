@@ -57,3 +57,11 @@ https://docs.microsoft.com/en-us/azure/governance/blueprints/overview
 
 
 
+## Clean-up all resource
+
+Azure cloud shell with powershell
+https://techgenix.com/removing-azure-resources/
+
+````
+Get-AzResource | ForEach { Remove-AzResource -ResourceId $_.ResourceId -Force -Confirm:$False }
+````
