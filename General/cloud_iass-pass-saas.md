@@ -50,12 +50,19 @@ https://www.bmc.com/blogs/serverless-faas/
 - IaaS provider can propose base image (AMI, AZ VM template) but we have to manage os, mdw, runtime etc by ourself after...
 We can also have auto-scaling.
 - PaaS provider will manage underlying infrastructure, and hide servers from customer.
-    - Traditionnal PaaS: user can access to "managed" nodes and scaling is made by spinning up more servers (and customers is billed based on #servers used)
+    - Traditionnal PaaS: user can access to "managed" nodes and scaling is made by spinning up more servers (and customers is billed based on #servers used), We have 2 options:
+        - PaaS with @ccess to managed nodes
+        - PaaS with node farm but no @ccess
     - Serverless: User does not have access/visibility to server. They are managed by service provider on behalf of customers. When app is not used, no ressouce is allocated to application.
     - FaaS: If offers possibility for dev to create software function in the cloud with event driven computing. It does not require server to constantly run, we pay for function execution time
 
-
-<!-- we could say FaaS is a subset of serverless as when using FaaS, provider manage infra and also oppose them -->
+We could say FaaS is a subset of serverless as when using FaaS, provider manage infra and also oppose them.
+Why?:
+- https://www.trek10.com/blog/is-fargate-serverless 
+- https://www.bmc.com/blogs/serverless-faas/
+- https://aws.amazon.com/lambda/ (lamdba is canonical example of FaaS)
+> AWS Lambda is a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers.
+- Fargate is serverless and Lamdba is serverless FaaS
 
 ## Container Orchestration
 
@@ -121,8 +128,9 @@ We can also use a private cloud for this.
 | Layer                       | Compute                                                               |
 | --------------------------- | ----------------------------------------------------------------------|
 | IaaS                        | **Azure VM**, AWS EC2                                                 |
-| PaaS with @ to managed nodes| **Azure AKS**, AWS EK(8s)S, AWS EC(container)S,  AWS elasticbeanstalk |                            
-| Serverless                  | **Azure ACI (container instance)**, Fargate AWS EKS, Fargate AWS ECS, Google cloud run, **Azure App svc** |
+| PaaS with @ to managed nodes| **Azure AKS**, AWS EK(8s)S, AWS EC(container)S,  AWS elasticbeanstalk |
+| PaaS with node farm but no @| **Azure App svc**                                                     |                              
+| Serverless                  | **Azure ACI (container instance)**, Fargate AWS EKS, Fargate AWS ECS, Google cloud run |
 | FaaS                        | **Azure function**, AWS lambda, **Azure logic Apps**                   |                                    
 
 
@@ -130,7 +138,7 @@ We can also use a private cloud for this.
 
 - Note several serverless service have a cold start (close to FaaS)
 
-- Azure App Service is a PaaS with no access to mamaged nodes: https://docs.microsoft.com/en-us/azure/app-service/overview
+- Azure App Service is a PaaS with no access to managed nodes: https://docs.microsoft.com/en-us/azure/app-service/overview
 > With App Service, you pay for the Azure compute resources you use. The compute resources you use are determined by the App Service plan that you run your apps on. For more information, see Azure App Service plans overview.
 We have concept of App Service Plan: https://docs.microsoft.com/en-us/azure/app-service/overview-hosting-plans
 > In App Service (Web Apps, API Apps, or Mobile Apps), an app always runs in an App Service plan. In addition, Azure Functions also has the option of running in an App Service plan. An App Service plan defines a set of compute resources for a web app to run. These compute resources are analogous to the server farm in conventional web hosting (behind we have VM and configure their size).
@@ -156,7 +164,8 @@ Fargate AWS ECS (https://aws.amazon.com/ecs/?nc1=h_ls) and Azure container insta
 
 - Azure ACI is serverless https://docs.microsoft.com/en-us/azure/container-instances/ unlike Azure AKS, see https://docs.microsoft.com/fr-fr/azure/aks/ssh 
 If we deploy AKS we will have a VM scale set and can connect to VM (it is not visible in VM azure console)
-When deploying though it is serverless we can choose VM size. 
+
+- Note Azure ACI we have resource requirement (https://portal.azure.com/#create/Microsoft.ContainerInstances) (it is not really a VM size. AZ900 exam prep book is not 100% accurate, p56) wheras an app service plan we talk about instance (see settings of exisiting svc plan) => difference between "PaaS with node farm but no @ccess" vs "serverless".  
 
 - Here Fargate vs Lambda ([or serverless vs FaaS](From-IasS-to-serverless-PaaS)): https://www.trek10.com/blog/is-fargate-serverless
 > Don’t let the word “serverless” confuse you: Fargate is fundamentally just less infrastructure; Lambda-based “serverless” confers benefits to your business on a scale that Fargate simply can’t touch.
@@ -199,33 +208,13 @@ and it can be kube/docker compose in first 3 options
 - Launch a docker via job API 
 
 
-[HERE CONFIRMED OK all above yes, reconfirmed just do db clear OK YES reconfirmed start on db only after fix 3 PM 8nov OK]
-
 ## Cloud provider database service overview 
 
-For database note (from esi practise question) we have
 
-- AZ sql manage instance we can access VM
-https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/instance-create-quickstart
-- unlike azure sql db (serverless)
-- and could have Azure VM with a database template (as shown in Az service course)
-
-
-OK: only remain point on dbaas (optional)
-
-Plurasight
-When we deploy RDS we do not have access to EC2 behind (see example). RDS is PaaS
-They consider dynamoDB as a SaaS as it is exposed via API or CLI. (ask question, PS aws cloudfoundation tra)
-
-
-https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html
+See [database and storage](db-and-storage.md).
 
 ## other notes
 
 - See also https://github.com/scoulomb/myPublicCloud/blob/master/AWS/1-microservice-on-aws-notes.md (checked and accurate)
 - AWS service overview: https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html 
-
-
-https://servian.dev/azure-az-900-exam-preparation-guide-how-to-pass-in-3-days-dabf5534507a 
-
 
