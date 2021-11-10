@@ -6,9 +6,10 @@
 
 ### Microsft SQL server options: https://portal.azure.com/#create/Microsoft.AzureSQL
 
-- SQL on VM (IaaS)
+#### SQL on VM (IaaS)
+
 This is considered as IaaS and not a PaaS
-Actually this is an helper to depploy SQL image on VM.
+Actually this is an helper to deploy SQL image on VM.
 
 There is no sql ressource like we had for AKS (AKS resource + VM scale set).
 
@@ -28,13 +29,54 @@ https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Micros
 
 VMs are visible in virtual machine panel
 
-- Azure SQL server (PaaS)
+#### Azure SQL databases
 
-SQL server can create sql database within, we have no vm access (confirmed with test)
+There are 3 deployment options:
 
-- Azure SQL manage instance (PaaS) - not avail in free tier but same no access to VM
 
-See https://medium.com/awesome-azure/azure-difference-between-azure-sql-database-and-azure-sql-managed-instance-sql-mi-2e61e4485a65
+- Single database
+    - We can pay based on 
+        - [DTU model](https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tiers-dtu) 
+        > Service tiers in the DTU-based purchase model are differentiated by a range of compute sizes with a fixed amount of included storage, fixed retention period for backups, and fixed price. All service tiers in the DTU-based purchase model provide flexibility of changing compute sizes with minimal downtime; however, there is a switch over period where connectivity is lost to the database for a short amount of time, which can be mitigated using retry logic. Single databases and elastic pools are billed hourly based on service tier and compute size.
+        -  vcore model with 
+            - [a provisionned](https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tiers-sql-database-vcore): Main differnce with DTU is that we can customize config and not take a pre-exisiting package of RAM, CPU and storage 
+            - [serverless tier](https://docs.microsoft.com/en-us/azure/azure-sql/database/serverless-tier-overview)
+            > Serverless is a compute tier for single databases in Azure SQL Database that automatically scales compute based on workload demand and bills for the amount of compute used per second.
+- elastic pool: From portal description it "provide a cost-effective solution for managing the performance of multiple databases with variable usage pattern". See also https://beingadba.com/2020/05/25/single-database-vs-elastic-pool/. It is actually a way to have several DB sharing same pool of resource which do not have peak at same time
+- Database server: "database servers are used to manage groups of single databases and elastic pools. 
+- Actually a single db database is part of
+    - a server [deployment option 1]
+    - an elastic pool which is part of a server [deployment option 2] 
+    Thus an elastic pool has same pricing startegy as single database.
+
+we have no vm access (confirmed with test)
+
+Note from a single database editor of db1 we can run (tested without elastic pool)
+
+````
+CREATE DATABASE database_name;
+````
+This will create a new single database  (new azure ressource) attached on that db server.
+
+#### Azure SQL manage instance (PaaS) [deployment option 3]
+
+Recommend for lift and shift.
+
+We have 2 option
+
+- Single instance (not avail in free tier, tested with pas-as-you go subscription). No access to VM. It will deploy a SQL managed instance, nsg, route table and vnet.
+
+- Single instance - Azure Arc: it deploy a manage instance on your own VM/k8s!": https://docs.microsoft.com/en-us/azure/azure-arc/data/managed-instance-overview
+
+
+
+Note from [DTU model](https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tiers-dtu) 
+> Azure SQL Managed Instance does not support a DTU-based purchasing model.
+
+We have access to a managed server and can create database from there. Cf
+    - https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/connect-vm-instance-configure
+    - https://docs.microsoft.com/fr-fr/sql/t-sql/statements/create-database-transact-sql?view=sql-server-ver15&tabs=sqlpool
+
 
 ### Other databases
 
@@ -73,7 +115,7 @@ It suports  several databases engines
 
 From my test with RDS we do not have access to managed node (EC2 instance, cf. also ps Tucker/ understanding aws core svc /  module 6 db / summary / scenario 2) but can choose the size of the nodes
 It is also possible to use RDS on-premise. In that particular cases case we have access to nodes:
-https://aws.amazon.com/blogs/database/getting-started-with-amazon-rds-managed-databases-in-your-on-premises-vmware-environment/
+https://aws.amazon.com/blogs/database/getting-started-with-amazon-rds-managed-databases-in-your-on-premises-vmware-environment/ (similar to Azure arc option)
 - DynamoDB  (PaaS (https://www.section.io/engineering-education/getting-started-with-aws-dynamodb/)
     - Pluralsigh considers it is SaaS as it is serverless cf. Tucker/ understanding aws core svc /  module 6 db / DynamoDB): https://aws.amazon.com/dynamodb/
     - Actually some would argue DBaaS is more SaaS. Cf [cloud_iaas-paas-saas](./cloud_iaas-paas-saas.md#DBaaS).
@@ -88,15 +130,16 @@ https://www.lemagit.fr/conseil/Bien-choisir-entre-Amazon-RDS-pour-Aurora-et-Auro
 | Layer                       | Compute                                                                      |
 | --------------------------- | --------------------------------------------------------------------------   |
 | IaaS                        | **DB img Azure VM**, DB img AWS EC2, **Azure SQL on VM**, EC2 for SQL server |
-| PaaS with @ to managed nodes| None (except AWS RDS and VMWare)                                             |
-| PaaS with node farm but no @| **Azure (MS) SQL server**, **Azure (MS) SQL manageed instance**, **Azure db for pgSQL**, **Azure database for MariaDB**, RDS with [Aurora, pgSQL, mySQLm MariaDB, Oracle, MS SQL]|                                         
-| Serverless                  | **Azure Cosmo DB**, **Azure cache for Redis**, Aurora serverless             |
+| PaaS with @ to managed nodes| Exception of AWS RDS and VMWare, **Azure SQL managed instance with Arc**     |
+| PaaS with node farm but no @| **Azure SQL database except vcore, serverless tier**, **Azure SQL managed instance except with Arc**, **Azure db for pgSQL**, **Azure database for MariaDB**, RDS with [Aurora, pgSQL, mySQLm MariaDB, Oracle, MS SQL]|                                         
+| Serverless                  | **Azure SQL database, vcore, serverless tier**, **Azure Cosmo DB**, **Azure cache for Redis**, Aurora serverless            |
 | FaaS                        | N/A                                                                   |                                    
 
 - Note Azure db in "PaaS with node farm but no @", we mention server size unlike Azure serverless db (Azure Cosmos DB)
 
 
-[we are here remaing is clear !]
+<!-- Compliant AZ900 book -->
+[we are here yes, above ok!]
 # File storage
 
 ## Azure 

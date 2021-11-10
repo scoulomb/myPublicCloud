@@ -202,11 +202,19 @@ So container can be run in
 and it can be kube/docker compose in first 3 options
 
 
-## Own serverless with kubenertes
+## Build a serverless service on top of kubenertes
 
 - OpenFasS
 - Launch a docker via job API 
+- kNative: serverless where function is the container and scaling to 0: https://knative.dev/docs/getting-started/first-autoscale/
 
+## Quarkus
+
+Quarkus can so serverless/FaaS: https://quarkus.io/vision/continuum (not here they consider it as [synonym](#From-IaaS-to-diffferent-level-of-PaaS)).
+And it operates
+> to various FaaS environments like AWS Lambda, Azure Functions, Knative, and Knative Events (Cloud Events). It is also usable as a standalone service.
+
+Not the "It is also usable as a standalone service.", it is less serverless in that case from defnition [here](#Serverless):https://en.wikipedia.org/wiki/Serverless_computing
 
 ## Cloud provider database service overview 
 
