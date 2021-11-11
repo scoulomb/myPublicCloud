@@ -4,7 +4,10 @@ Self-learning of basic public cloud concept.
 
 ## General concept
 
-- [IaaS, PaaS, SaaS](./General/cloud_iass-pass-saas.md)
+- [Cloud IaaS, PaaS, SaaS](./General/1-cloud_iass-pass-saas.md)
+- [Cloud compute overview](./General/2-cloud-compute-overview.md)
+- [Cloud database overview](./General/3-cloud-db-overview.md)
+- [Cloud file storage overview](./General/4-file-storage-overview.md)
 
 ## AWS
 

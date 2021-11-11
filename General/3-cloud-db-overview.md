@@ -139,11 +139,5 @@ https://www.lemagit.fr/conseil/Bien-choisir-entre-Amazon-RDS-pour-Aurora-et-Auro
 
 
 <!-- Compliant AZ900 book -->
-[we are here yes, above ok!, 11 nov commit 5h25 OK YES, consistent]
-# File storage
 
-## Azure 
-
-### other storage
-
-Blob ...
+[Next: File storage overview](4-file-storage-overview.md)
