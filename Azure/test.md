@@ -51,16 +51,6 @@ https://docs.microsoft.com/en-us/learn/modules/choose-azure-services-sla-lifecyc
 With 2 az and lb, how can we determine SLA increase?
 
 
-
-https://jan-v.nl/post/using-azure-functions-to-empower-your-teams/
-ou  ils font des actionnable buttons depuis teams (en utilisant plein de service azure 
-
-
- Peut etre une autre approche serverless serait une azure logic apps avec le connector teams: https://docs.microsoft.com/en-us/connectors/teams/,  Ca permettrait de faire d'autre actions que le message dans teams, et ca a l''air de pas trop savoir coder (du coup ca peut etre pas mal pour un client final). Je ne sais pas ce qui est mieux !
-https://docs.microsoft.com/en-us/azure/app-service/tutorial-send-email?tabs=dotnet
-https://docs.microsoft.com/en-us/connectors/teams/
-
-
 https://servian.dev/azure-az-900-exam-preparation-guide-how-to-pass-in-3-days-dabf5534507a 
 
 

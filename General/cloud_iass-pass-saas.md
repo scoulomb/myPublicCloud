@@ -25,7 +25,7 @@ Source: https://www.redhat.com/en/topics/cloud-computing/iaas-vs-paas-vs-saas
 
 https://en.wikipedia.org/wiki/Serverless_computing
 
-> **Serverless computing is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers.** "Serverless" is a misnomer in the sense that servers are still used by cloud service providers to execute code for developers. However, developers of serverless applications are not concerned with capacity planning, configuration, management, maintenance, fault tolerance, or scaling of containers, VMs, or physical servers. Serverless computing does not hold resources in volatile memory; computing is rather done in short bursts with the results persisted to storage. When an app is not in use, there are no computing resources allocated to the app. Pricing is based on the actual amount of resources consumed by an application.[1] It can be a form of utility computing. 
+> **Serverless computing is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers.** "Serverless" is a misnomer in the sense that servers are still used by cloud service providers to execute code for developers. However, developers of serverless applications are not concerned with capacity planning, configuration, management, maintenance, fault tolerance, or scaling of containers, VMs, or physical servers. Serverless computing does not hold resources in volatile memory; computing is rather done in short bursts with the results persisted to storage. **When an app is not in use, there are no computing resources allocated to the app**. Pricing is based on the actual amount of resources consumed by an application.[1] It can be a form of utility computing. 
 
 https://www.bmc.com/blogs/serverless-faas/
 
@@ -204,9 +204,36 @@ and it can be kube/docker compose in first 3 options
 
 ## Build a serverless service on top of kubenertes
 
-- OpenFasS
+- OpenFaaS => show we have a server on provider side when doing serverless!
 - Launch a docker via job API 
 - kNative: serverless where function is the container and scaling to 0: https://knative.dev/docs/getting-started/first-autoscale/
+
+
+## Example of Azure serverless
+
+Excellent example here to send email with Azure function here: https://jan-v.nl/post/using-azure-functions-to-empower-your-teams/
+
+> create so-called ‘actionable messages’ within Teams?
+> An actionable message can be created with a couple of buttons which will invoke an URL when pressed. 
+
+![Source: https://jan-v.nl/post/using-azure-functions-to-empower-your-teams](./doc/doc-actionable-team-button.png)
+
+> Over here you’re seeing an Event Grid, which contains events of stuff happening in your overall Azure solution. An Azure Function is subscribed to a specific topic and once it’s triggered a message is being posted on the Teams channel. This can be an actionable message or a plain message.
+> If it’s an actionable message, a button can be pressed which in its turn also sends a GET-request to a different Azure Function. You want this Function to be fast, so the only thing it does is validate the request and stores the message (command) on a (Service Bus) queue. A different Azure Function will be triggered, which will make sure the command will be executed properly by invoking an API/service which is responsible for ‘solving’ the issue.
+
+Here it is an EDA with Lambda serverless: https://www.redhat.com/en/topics/integration/what-is-event-driven-architecture
+
+Mote on EDA here: https://www.redhat.com/en/topics/integration/what-is-event-driven-architecture
+
+See also Kafka very good course [on pluralsigth](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents).
+
+We can also send mail with serverles approach using with Azure logic apps 
+<!-- MAES is equivalent serverless service on top of conductor -->
+We would use the [team connectors](https://docs.microsoft.com/en-us/connectors/teams/).
+It would also enable to easily do other action (service now....).
+See good tuto in Microsoft [doc site](https://docs.microsoft.com/en-us/azure/app-service/tutorial-send-email?tabs=dotnet).
+
+<!-- DDez discussion + run -->
 
 ## Quarkus
 
@@ -215,6 +242,8 @@ And it operates
 > to various FaaS environments like AWS Lambda, Azure Functions, Knative, and Knative Events (Cloud Events). It is also usable as a standalone service.
 
 Not the "It is also usable as a standalone service.", it is less serverless in that case from defnition [here](#Serverless):https://en.wikipedia.org/wiki/Serverless_computing
+
+<!-- AMOR discussion -->
 
 ## Cloud provider database service overview 
 
