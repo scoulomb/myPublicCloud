@@ -65,3 +65,5 @@ https://techgenix.com/removing-azure-resources/
 ````
 Get-AzResource | ForEach { Remove-AzResource -ResourceId $_.ResourceId -Force -Confirm:$False }
 ````
+
+and run it from powershell (in vscode) via https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-6.6.0

@@ -131,13 +131,26 @@ https://www.lemagit.fr/conseil/Bien-choisir-entre-Amazon-RDS-pour-Aurora-et-Auro
 | --------------------------- | --------------------------------------------------------------------------   |
 | IaaS                        | **DB img Azure VM**, DB img AWS EC2, **Azure SQL on VM**, EC2 for SQL server |
 | PaaS with @ to managed nodes| Exception of AWS RDS and VMWare, **Azure SQL managed instance with Arc**     |
-| PaaS with node farm but no @| **Azure SQL database except vcore, serverless tier**, **Azure SQL managed instance except with Arc**, **Azure db for pgSQL**, **Azure database for MariaDB**, RDS with [Aurora, pgSQL, mySQLm MariaDB, Oracle, MS SQL]|                                         
-| Serverless                  | **Azure SQL database, vcore, serverless tier**, **Azure Cosmo DB**, **Azure cache for Redis**, Aurora serverless            |
+| PaaS with node farm but no @| **Azure SQL database except vcore, serverless tier**, **Azure SQL managed instance except with Arc**, **Azure db for pgSQL**, **Azure database for MariaDB**,  **Azure database for mySQL**, RDS with [Aurora, pgSQL, mySQLm MariaDB, Oracle, MS SQL], **Azure Cosmo DB in provisonned mode**, Amazon documentDB, SimpleDB|                                      
+| Serverless                  | **Azure SQL database, vcore, serverless tier**, **Azure Cosmos DB in serverless mode**, **Azure cache for Redis**, Aurora serverless, DynamoDB            |
 | FaaS                        | N/A                                                                   |                                    
 
-- Note Azure db in "PaaS with node farm but no @", we mention server size unlike Azure serverless db (Azure Cosmos DB)
+- Note Azure db in "PaaS with node farm but no @", we mention server size and for Azure Cosmos DB we can choose
+    - Provisonned throughput (like machine size)
+    - or serverless 
 
+- More doc on Cosmos DB in provisionned or serverless mode
+    - https://docs.microsoft.com/fr-fr/azure/cosmos-db/serverless
+    - https://docs.microsoft.com/en-us/azure/cosmos-db/throughput-serverless
+
+- https://aws.amazon.com/dynamodb/?nc1=h_ls
+ > Amazon DynamoDB is a fully managed, serverless, key-value NoSQL database designed to run high-performance applications at any scale
+
+- Aurora serverless <=> Azure SQL database, vcore, serverless tier
+- See also serverless SQL pool in Azure synapse analytics: https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services#database and consistency
+<!-- no need more -->
+- I took assumption Amazon documentDB and SimpleDB are not serverless
 
 <!-- Compliant AZ900 book -->
 
-[Next: File storage overview](4-file-storage-overview.md)
+[Next: Data storage overview](4-data-storage-overview.md)
