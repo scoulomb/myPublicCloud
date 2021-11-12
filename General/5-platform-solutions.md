@@ -7,3 +7,4 @@ What to do after?
 - pluralsigh aws core service tra exam
 - ps azure finish the service+sec course
 - exam bank in ps, esi
+- AZ book
