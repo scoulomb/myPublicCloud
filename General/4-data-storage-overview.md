@@ -77,4 +77,6 @@ And Azure Databox <=> snowball and snowmobile
 See also https://docs.microsoft.com/en-us/azure/architecture/aws-professional/services
 <!-- AZ990 book consistent ok -->
 
+When we create a cloud shell we can see the storage account in explorer.
+
 [Next: platform solutions](5-platform-solutions.md)
