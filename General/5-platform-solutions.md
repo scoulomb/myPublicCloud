@@ -1,5 +1,5 @@
 # Platfrom solutions
-<!-- I am here 1,2,3,4 concluded, with db add and files option commit 12/11 23:17 -->
+<!-- I am here 1,2,3,4 concluded, with db add and files option commit 12/11 23:17  + 23:39-->
 
 Azure synapse what server do we have behind?
 

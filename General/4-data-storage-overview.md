@@ -10,11 +10,12 @@ https://portal.azure.com/#blade/Microsoft_Azure_Resources/QuickstartAnchorServic
 - Blob storage: unstructured data
     - Block blob
     - Append blob (for instance logs)
-    - page blobs (VM disks and database are using page blob as persistent storage) 
+    - Page blobs (VM disks and database are using page blob as persistent storage). See https://docs.microsoft.com/en-us/answers/questions/206327/page-blob-and-its-relation-with-disk.html
+    >  Yes, Premium and Standard disks (managed and unmanaged) are backed by Page Blobs
 - File storage: same as blob storage but supports SMB protcol so it can be attached to several VMs (network drive later)
     - Good for migration scenarios
     - Can be shared on Azure VM or on premises
-- Disk: virtual machine disk
+- Disk: virtual machine disk (unmanaged are linked to page blob storage of user's storage account, see below). Disk is the only element to not be part of a storage account as we will see in Storage explorer and console.
 - Table storage: no-sql db (like Cosmos db)
 - Queue storage: for service delivery guarantee
 
@@ -22,9 +23,9 @@ LRS storage (locally redudant storage, 3 time in az), and GRS (georedudant) if o
 We can have read access only GRS.
 
 3 access tiers:
-    - Hot tier (highest storage cost , lowest data access cost)
-    - Cool tier (lower storage cost , higher data access cost)
-    - Archive tier (lowest storage cost , highest data access cost)
+- Hot tier (highest storage cost , lowest data access cost)
+- Cool tier (lower storage cost , higher data access cost)
+- Archive tier (lowest storage cost , highest data access cost)
 
 Support static website hosting and can integrate with CDN.
 It intgrates Azure serach.
@@ -43,7 +44,7 @@ We have subscprition
 So disks does not appear as a page blob.
 
 We actually created a manage disk (cf AZ900 book).
-See https://aidanfinn.com/?p=20441 where we create an umanaged disk from a blob.
+See https://aidanfinn.com/?p=20441 where we create an umanaged disk from a blob in a storage account.
 
 <!-- both mamnaged and umanaged available in classic/non classic version of disk-->
 
@@ -78,5 +79,7 @@ See also https://docs.microsoft.com/en-us/azure/architecture/aws-professional/se
 <!-- AZ990 book consistent ok -->
 
 When we create a cloud shell we can see the storage account in explorer.
+
+Source: https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents (data storage in Azure)
 
 [Next: platform solutions](5-platform-solutions.md)
