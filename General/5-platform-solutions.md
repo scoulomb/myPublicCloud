@@ -8,3 +8,12 @@ What to do after?
 - ps azure finish the service+sec course
 - exam bank in ps, esi
 - AZ book
+
+We can consider APIM is close to serverless 
+[Azure, APIM, k8s, Kafka and DAPR integration](../Azure/Azure-APIM-k8s-Kafkapubsub-and-DAPR-integration.md).
+
+
+Add pub priv cloud and public cloud for a given industry
+
+understand express route vpn 
+and spoke and hub and vpn in pop
