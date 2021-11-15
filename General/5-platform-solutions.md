@@ -15,5 +15,7 @@ We can consider APIM is close to serverless
 
 Add pub priv cloud and public cloud for a given industry
 
-understand express route vpn 
-and spoke and hub and vpn in pop
+[Network basic](../Azure/Networking/basic.md) => CONCLUDED, 
+Next: check az900 book and going further via 
++ https://docs.microsoft.com/en-us/azure/networking/fundamentals/networking-overview
++ https://docs.microsoft.com/en-us/learn/certifications/exams/az-303 => https://docs.microsoft.com/en-us/learn/paths/architect-network-infrastructure/
