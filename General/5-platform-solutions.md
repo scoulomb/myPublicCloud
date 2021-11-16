@@ -64,7 +64,7 @@ AZ900 book, page 113
 
 ## Cognitive service 
 
-It is a SaaS ML (p119)
+It is a SaaS ML (p119) => SaaS or PaaS for service below ask ourself question
 
 ## Bot service 
 
