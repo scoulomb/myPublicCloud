@@ -84,18 +84,25 @@ The architecture consists of the following components.
 
 > **Bastion.** Azure Bastion allows you to log into VMs in the virtual network through SSH or remote desktop protocol (RDP) without exposing the VMs directly to the internet. If you lose connectivity through the VPN, you can still use Bastion to manage the VMs in the virtual network.
 
-There is 2 kinds of VPN:
-- site-to-site (here) but we also have 
-- point-to-site
+There are 3 connection supported by VPN:
+- site-to-site (here) but we also have: encrypted on public Internet
+- point-to-site: encrypted on public Internet
+- VNet-to-Vnet (see AZ900 book, page 64): in that case we use Microsoft's backbone infrastructure not over internet and on top of this it is encrypted. 
+This should not be confused with VNet peering (described [below](#vnet-peering)). 
+See https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal
+> This type of configuration creates a connection between two virtual network gateways. This article does not apply to VNet peering
 
-See here for more info: https://docs.microsoft.com/en-us/azure/vpn-gateway/design
+![vpn-vnet-vnet-diagram](media/vpn-vnet-vnet-diagram.png)
+
+
+See here for more info on VPN: https://docs.microsoft.com/en-us/azure/vpn-gateway/design
 where express route and vnet peering are also mentionned.
 
 ## Vnet peering
 
 ### Definition
 
-> Virtual network peering enables you to seamlessly connect two or more Virtual Networks in Azure. The virtual networks appear as one for connectivity purposes. The traffic between virtual machines in peered virtual networks uses the Microsoft backbone infrastructure. Like traffic between virtual machines in the same network, traffic is routed through Microsoft's private network only.
+> Virtual network peering enables you to seamlessly connect two or more Virtual Networks in Azure. The virtual networks appear as one for connectivity purposes. The traffic between virtual machines in peered virtual networks uses the **Microsoft backbone infrastructure**. Like traffic between virtual machines in the same network, traffic is routed through Microsoft's private network only.
 
 > Azure supports the following types of peering:
 

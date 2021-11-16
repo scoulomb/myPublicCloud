@@ -31,6 +31,13 @@ https://www.bmc.com/blogs/serverless-faas/
 
 > As the name suggests, serverless is a computing model where infrastructure orchestration is managed by service providers.
 
+From AZ900 book, page 122.
+> Serverless doesn't mean that no VMs are involved, It simplify means that the VM that's running your code isn't explivicylu allocated to you.
+> You code is moved to the VM, it's executed, and then it's moved off.
+
+Serverless actually allows cloud provider to monetize unused VM.
+
+Example of serverless in Azure are cognitive service, functions, logic apps (serverless wokflows), event grids.
 
 ### FaaS
 

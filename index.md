@@ -8,6 +8,7 @@ Self-learning of basic public cloud concept.
 - [Cloud compute overview](./General/2-cloud-compute-overview.md)
 - [Cloud database overview](./General/3-cloud-db-overview.md)
 - [Cloud data storage overview](./General/4-data-storage-overview.md)
+- [Platform solutions](./General/5-platform-solutions.md)
 
 ## AWS
 
