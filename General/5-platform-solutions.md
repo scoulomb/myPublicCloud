@@ -59,6 +59,7 @@ AZ900 book, page 113
 
 <!-- 3  questions resolved + big data concluded -->
 <!-- all above ok -->
+<!-- Azure function concluded and juge consistent OK RECCL->
 
 ## Machine learning
 

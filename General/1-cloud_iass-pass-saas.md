@@ -57,10 +57,13 @@ https://www.bmc.com/blogs/serverless-faas/
 - IaaS provider can propose base image (AMI, AZ VM template) but we have to manage os, mdw, runtime etc by ourself after...
 We can also have auto-scaling.
 - PaaS provider will manage underlying infrastructure, and hide servers from customer.
-    - Traditionnal PaaS: user can access to "managed" nodes and scaling is made by spinning up more servers (and customers is billed based on #servers used), We have 2 options:
-        - PaaS with @ccess to managed nodes
-        - PaaS with node farm but no @ccess
-    - Serverless: User does not have access/visibility to server. They are managed by service provider on behalf of customers. When app is not used, no ressouce is allocated to application.
+    - Traditionnal PaaS: user can access to "managed" nodes and scaling is made by spinning up more servers (and customers is billed based on #servers used). Scalability is visible to developer. We have 2 options:
+        - PaaS with @ccess to managed (dedicated) nodes
+        - PaaS with (dedicated) node farm but no @ccess
+    - Serverless: User does not have 
+        	- access / visibility to  server
+            - **Dedicated server.**
+            **Machine are allocated on demand**. They are managed by service provider on behalf of customers (hidden scalalbilty). When **app is not used, no ressouce is allocated to application.**
     - FaaS: If offers possibility for dev to create software function in the cloud with event driven computing. It does not require server to constantly run, we pay for function execution time
 
 We could say FaaS is a subset of serverless as when using FaaS, provider manage infra and also oppose them.
