@@ -7,7 +7,7 @@
 | --------------------------- | ----------------------------------------------------------------------|
 | IaaS                        | **Azure VM**, AWS EC2                                                 |
 | PaaS with @ to managed nodes| **Azure AKS**, AWS EK(8s)S, AWS EC(container)S,  AWS elasticbeanstalk |
-| PaaS with node farm but no @| **Azure App svc**                                                     |                              
+| PaaS with node farm but no @| **Azure App svc**, **Azure function with App Service plan**                                                     |                              
 | Serverless                  | **Azure ACI (container instance)**, Fargate AWS EKS, Fargate AWS ECS, Google cloud run |
 | FaaS                        | **Azure function**, AWS lambda, **Azure logic Apps**                   |                                    
 
@@ -45,8 +45,26 @@ If we deploy AKS we will have a VM scale set and can connect to VM (it is not vi
 
 - Note Azure ACI we have resource requirement (https://portal.azure.com/#create/Microsoft.ContainerInstances) (it is not really a VM size. AZ900 exam prep book is not 100% accurate, p56) wheras an app service plan we talk about instance (see settings of exisiting svc plan) => difference between "PaaS with node farm but no @ccess" vs "serverless".  
 
-- Here Fargate vs Lambda ([or serverless vs FaaS](From-IasS-to-serverless-PaaS)): https://www.trek10.com/blog/is-fargate-serverless
+- Here Fargate vs Lambda ([or serverless vs FaaS](./1-cloud_iass-pass-saas#From-IasS-to-serverless-PaaS)): https://www.trek10.com/blog/is-fargate-serverless
 > Don’t let the word “serverless” confuse you: Fargate is fundamentally just less infrastructure; Lambda-based “serverless” confers benefits to your business on a scale that Fargate simply can’t touch.
+
+- Note  Azure function are thus serverless FaaS and compliant with [Azure function doc](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal0:
+> Hosting plan that defines how resources are allocated to your function app:
+> In the default Consumption plan, resources are added dynamically as required by your functions. In this serverless hosting, you pay only for the time your functions run. 
+
+But it is also possible to have Azure function attached to an App Service plan 
+> When you run in an App Service plan, you must manage the scaling of your function app.
+
+In that case we have a "PaaS with node farm but no @ccess"
+
+See also AZ900 book, p123
+
+> Function apps are serveless, but under the hood, they run on Azure app service. In fact you can choose to create your Function App in App service plan, but if you di, you won't benerfit from the consumption model of paying only when your code runs.
+
+See [definition, as in that case we scale VM directly and nodes constantly runs](./1-cloud_iass-pass-saas#From-IasS-to-serverless-PaaS)
+However even if you have dedicated VM with App Service plan when no function is running it should not consume you App service plan.
+So it is a if we were doing serverless on our own resource (rather than shared with global Azure infra).
+See section [below](#Build-a-serverless-service-on-top-of-kubenertes).
 
 - Note managed services can deploy other resources:
 App service deploy app service plan,  log analytics workspace, application insigths.
@@ -87,7 +105,7 @@ and it can be kube/docker compose in first 3 options
 - kNative: serverless where function is the container and scaling to 0: https://knative.dev/docs/getting-started/first-autoscale/
 
 
-## Example of Azure serverless
+## Example of Azure serverless integration: function + event grid 
 
 Excellent example here to send email with Azure function here: https://jan-v.nl/post/using-azure-functions-to-empower-your-teams/
 
@@ -105,13 +123,19 @@ Mote on EDA here: https://www.redhat.com/en/topics/integration/what-is-event-dri
 
 See also Kafka very good course [on pluralsigth](https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents).
 
-We can also send mail with serverles approach using with Azure logic apps 
+We can also send mail with serverles approach using with **Azure logic apps** 
 <!-- MAES is equivalent serverless service on top of conductor -->
 We would use the [team connectors](https://docs.microsoft.com/en-us/connectors/teams/).
 It would also enable to easily do other action (service now....).
 See good tuto in Microsoft [doc site](https://docs.microsoft.com/en-us/azure/app-service/tutorial-send-email?tabs=dotnet).
 
 <!-- DDez discussion + run -->
+
+See AZ900, p122
+
+## Logic app is not really a compute service
+
+https://walkerscott.co/2020/03/azure-logic-apps-vs-azure-functions/
 
 ## Quarkus
 
