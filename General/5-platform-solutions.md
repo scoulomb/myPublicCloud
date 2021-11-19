@@ -59,7 +59,7 @@ AZ900 book, page 113
 
 <!-- 3  questions resolved + big data concluded -->
 <!-- all above ok -->
-<!-- Azure function concluded and juge consistent OK RECCL->
+<!-- Azure function concluded and juge consistent OK RECCL AND YES => OK INDEED STOP HERE - OK CCL CONFIRMED -->
 
 ## Machine learning
 
@@ -77,7 +77,11 @@ It is a SaaS ML (p119) => SaaS or PaaS for service below ask ourself question
 
 ## Serverless
 
+<!-- serverless ccl -->
 - Azure function, logic apps and event grid
+- For Azure function, see [2-cloud-compute-overview](2-cloud-compute-overview.md#Azure-function)
+- For integration see [2-cloud-compute-overview](2-cloud-compute-overview.md#Example-of-Azure-serverless-integration-with-function-and-event-grid).
+  
 
 ## DevOps solutions (separted from solution in pluralsigth)
 

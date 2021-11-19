@@ -60,19 +60,20 @@ We can also have auto-scaling.
     - Traditionnal PaaS: user can access to "managed" nodes and scaling is made by spinning up more servers (and customers is billed based on #servers used). Scalability is visible to developer. We have 2 options:
         - PaaS with @ccess to managed (dedicated) nodes
         - PaaS with (dedicated) node farm but no @ccess
-    - Serverless: User does not have 
-        	- access / visibility to  server
-            - **Dedicated server.**
-            **Machine are allocated on demand**. They are managed by service provider on behalf of customers (hidden scalalbilty). When **app is not used, no ressouce is allocated to application.**
-    - FaaS: If offers possibility for dev to create software function in the cloud with event driven computing. It does not require server to constantly run, we pay for function execution time
+    - Serverless:
+      	- User does not have  access / visibility to  server. And User does not have **Dedicated server.** **Machine are allocated on demand**. They are managed by service provider on behalf of customers (hidden scalalbilty).
+        - When **app is not used, no ressouce is allocated to application.**
+    - FaaS: If offers possibility for dev to **create software function in the cloud with event driven computing**. It does not require server to constantly run, we pay for function execution time
 
-We could say FaaS is a subset of serverless as when using FaaS, provider manage infra and also oppose them.
+We could say FaaS is a subset of serverless as when using FaaS, provider manage infra without dedicated server and no ressource alloated when not used. And also oppose them.
 Why?:
 - https://www.trek10.com/blog/is-fargate-serverless 
 - https://www.bmc.com/blogs/serverless-faas/
 - https://aws.amazon.com/lambda/ (lamdba is canonical example of FaaS)
 > AWS Lambda is a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers.
 - Fargate is serverless and Lamdba is serverless FaaS
+
+For Azure function, see [2-cloud-compute-overview](2-cloud-compute-overview.md#Azure-function)
 
 ## Container Orchestration
 

@@ -14,6 +14,8 @@
 
 ## Comments
 
+### Other
+
 - Note several serverless service have a cold start (close to FaaS)
 
 - Azure App Service is a PaaS with no access to managed nodes: https://docs.microsoft.com/en-us/azure/app-service/overview
@@ -45,6 +47,8 @@ If we deploy AKS we will have a VM scale set and can connect to VM (it is not vi
 
 - Note Azure ACI we have resource requirement (https://portal.azure.com/#create/Microsoft.ContainerInstances) (it is not really a VM size. AZ900 exam prep book is not 100% accurate, p56) wheras an app service plan we talk about instance (see settings of exisiting svc plan) => difference between "PaaS with node farm but no @ccess" vs "serverless".  
 
+### Azure function
+
 - Here Fargate vs Lambda ([or serverless vs FaaS](./1-cloud_iass-pass-saas#From-IasS-to-serverless-PaaS)).
 
 From https://www.trek10.com/blog/is-fargate-serverless
@@ -54,22 +58,24 @@ From https://www.trek10.com/blog/is-fargate-serverless
 
  This is compliant with [Azure function doc](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal0:
 > Hosting plan that defines how resources are allocated to your function app:
-> In the default Consumption plan, resources are added dynamically as required by your functions. In this serverless hosting, you pay only for the time your functions run. 
+> In the default Consumption plan, resources are added dynamically as required by your functions. In this **serverless hosting, you pay only for the time your functions run.** 
 
 But it is also possible to have Azure function attached to an App Service plan 
 
 > When you run in an App Service plan, you must manage the scaling of your function app.
 
-In that case we have a "PaaS with node farm but no @ccess", 
+In that case we have a "PaaS with node farm but no @ccess" (as App service), 
 from  [definition given here](./1-cloud_iass-pass-saas#From-IasS-to-serverless-PaaS) , since using App service plan we scale dedicated VM directly and nodes constantly runs.
 
 See also AZ900 book, p123
 
-> Function apps are serveless, but under the hood, they run on Azure app service. In fact you can choose to create your Function App in App service plan, but if you di, you won't benerfit from the consumption model of paying only when your code runs.
+> Function apps are serveless, but under the hood, they run on Azure app service. In fact you can choose to create your Function App in App service plan, but if you did, you won't benerfit from the consumption model of paying only when your code runs.
 
 However even if you have dedicated VM with App Service plan when no function is running it should not consume you App service plan.
 So it is a if we were doing serverless on our own resource (rather than shared with global Azure infra).
 See section [below](#Build-a-serverless-service-on-top-of-kubenertes).
+
+### Side resource created
 
 - Note managed services can deploy other resources:
 App service deploy app service plan,  log analytics workspace, application insigths.
@@ -110,7 +116,7 @@ and it can be kube/docker compose in first 3 options
 - kNative: serverless where function is the container and scaling to 0: https://knative.dev/docs/getting-started/first-autoscale/
 
 
-## Example of Azure serverless integration: function + event grid 
+## Example of Azure serverless integration with function and event grid 
 
 Excellent example here to send email with Azure function here: https://jan-v.nl/post/using-azure-functions-to-empower-your-teams/
 
