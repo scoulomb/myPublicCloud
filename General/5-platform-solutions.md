@@ -59,7 +59,7 @@ AZ900 book, page 113
 
 <!-- 3  questions resolved + big data concluded -->
 <!-- all above ok -->
-<!-- Azure function concluded and juge consistent OK RECCL AND YES => OK INDEED STOP HERE - OK CCL CONFIRMED -->
+<!-- Azure function concluded and juge consistent OK RECCL AND YES => OK INDEED STOP HERE - OK CCL CONFIRMED - STOP SUPER CLEAR - and linked below in Azure function with double pointer to iaas to pass OK -->
 
 ## Machine learning
 
