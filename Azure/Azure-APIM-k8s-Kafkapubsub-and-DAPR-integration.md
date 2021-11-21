@@ -6,8 +6,9 @@ Before do:
 - Kubernetes basic: https://github.com/scoulomb/myk8s
 - Not essential but some Azure 900 background
 - APIM: https://docs.microsoft.com/en-us/learn/paths/architect-api-integration/ 
-- Pluralsigth APIM course
-- Publish subscribe (Kafka class on ps)
+- Pluralsigth APIM course: https://app.pluralsight.com/library/courses/microsoft-azure-api-management-strategy-designing/table-of-contents
+- Publish subscribe (Kafka class on ps): https://app.pluralsight.com/library/courses/apache-kafka-getting-started/table-of-contents
+
 
 ## Hello kube 
 

@@ -23,6 +23,7 @@ Self-learning of basic public cloud concept.
 - [Azure function](./Azure/3-Azure-function.md). It is equivalent of AWS lambda.
 - [Azure cloud API](./Azure/azure_cloud_api.md)
 - [Network basic](./Azure/Networking/basic.md)
+- [Security](./Azure/security.md)
 - [exams](./Azure/test.md))
 
 ## GCP

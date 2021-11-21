@@ -147,6 +147,7 @@ See AZ900, p122 for serverless service
 ## Logic app is not really a compute service
 
 https://walkerscott.co/2020/03/azure-logic-apps-vs-azure-functions/
+Same for event grid.
 
 ## Quarkus
 

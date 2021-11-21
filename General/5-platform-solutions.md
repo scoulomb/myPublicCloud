@@ -1,6 +1,8 @@
 # Platform solutions
 <!-- 1,2,3,4 concluded --> 
 
+We will take example of Azure.
+
 Ressource: 
 - https://app.pluralsight.com/library/courses/microsoft-azure-services-concepts/table-of-contents
 - AZ900 book, chapter 3 (skills 3.1 describe core solutions available in Azure)
@@ -59,52 +61,76 @@ AZ900 book, page 113
 
 <!-- 3  questions resolved + big data concluded -->
 <!-- all above ok -->
-<!-- Azure function concluded and juge consistent OK RECCL AND YES => OK INDEED STOP HERE - OK CCL CONFIRMED - STOP SUPER CLEAR - and linked below in Azure function with double pointer to iaas to pass OK -->
-
-## Machine learning
+<!-- Azure function concluded and juge consistent OK RECCL AND YES => OK INDEED STOP HERE - OK CCL CONFIRMED - STOP SUPER CLEAR - and linked below in Azure function with double pointer to iaas to pass OK-->
 
 ## Cognitive service 
 
-It is a SaaS ML (p119) => SaaS or PaaS for service below ask ourself question
+It is a SaaS ML (p119) => SaaS or PaaS for service below ask ourself question (where service in [big data](#Big-Data) are PaaS, even if Azure Synapse studio)
+<!-- in 2/aws/ dynamodb saas in ps ok, stop here -->
+See doc here: https://azure.microsoft.com/fr-ca/services/cognitive-services/#overview
+
+## Machine learning
+
+AZ900 p 118.
+
+https://docs.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-machine-learning
+
+> Azure Machine Learning is a cloud service for accelerating and managing the machine learning project lifecycle. Machine learning professionals, data scientists, and engineers can use it in their day-to-day workflows: Train and deploy models, and manage MLOps.
+
+> You can create a model in Azure Machine Learning or use a model built from an open-source platform, such as Pytorch, TensorFlow, or scikit-learn. MLOps tools help you monitor, retrain, and redeploy models.
+
+It is a [SaaS](https://www.logiciels.pro/logiciel-saas/microsoft-azure-machine-learning).
 
 ## Bot service 
 
+Between PaaS and SaaS
+
 ## Iot
 
-- IoT Hub
-- IoT Central
-- Azure Sphere
 
-## Serverless
+- IoT Hub: PaaS offering to connecti millions of device securely and at scale
+- IoT Central: SaaS offering to connect, manage and monitor devices at scale
+ 
+See https://stackoverflow.com/questions/56425557/what-is-the-difference-between-azure-iot-hub-and-azure-iot-central
 
-<!-- serverless ccl -->
+- Azure Sphere: are services and products from Microsoft that allows vendors of Internet of Things devices to increase security by combining a specific system on a chip, Azure Sphere OS and an Azure-based cloud environment for continuous monitoring. 
+
+See https://en.wikipedia.org/wiki/Azure_Sphere
+
+
+## Serverless (PaaS)
+
+(AZ900 book, p122)
+<!-- serverless ccl, deja ccl ok, pas revenu-->
 - Azure function, logic apps and event grid
 - For Azure function, see [2-cloud-compute-overview](2-cloud-compute-overview.md#Azure-function)
 - For integration see [2-cloud-compute-overview](2-cloud-compute-overview.md#Example-of-Azure-serverless-integration-with-function-and-event-grid).
   
 
-## DevOps solutions (separted from solution in pluralsigth)
+## DevOps solutions (separated from solution in pluralsigth)
 
-- Azure devops
-- Azure devtest labs
-- github tools
+- Azure devops: https://azure.microsoft.com/fr-fr/services/devops/#overview
+    - Azure boards
+    - Azure pipleine 
+    - Aure repos
+    - Azure test plans: create abd track test to ensure reliable software release (AZ900 book, p139)
+    - Azure artifacts
+    - + Market place
+- Azure devtest labs: Quickly create environments using reusable templates and artifacts
+    - Quickly provision development and test environments
+    - Minimise waste with quotas and policies
+    - Set automated shutdowns to minimise costs
+    - Build Windows and Linux environment
+- github tools: https://github.com/features/actions
 
 
-What to do after?
-- pluralsigh aws core service tra exam
-- ps azure finish the service+sec course
-- exam bank in ps, esi
-- AZ book
+In core solution we have seen solution which are not 
+- compute (VMs)
+- DB or datastorage 
 
-We can consider APIM is close to serverless 
-[Azure, APIM, k8s, Kafka and DAPR integration](../Azure/Azure-APIM-k8s-Kafkapubsub-and-DAPR-integration.md).
+In compute we had seen Azure function, event grid and logic apps.
+Only function is compute. Cf [note](2-cloud-compute-overview.md#Logic-app-is-not-really-a-compute-service).
 
+<!-- all above ok ccl ok, consistent az900 books skills 3.1 ==> p 89-151 - STOP HERE, NO CHECK ABOVE CONCLUDED -->
 
-Add pub priv cloud and public cloud for a given industry
-
-[Network basic](../Azure/Networking/basic.md) => CONCLUDED, 
-Next: check az900 book and going further via 
-+ https://docs.microsoft.com/en-us/azure/networking/fundamentals/networking-overview
-+ https://docs.microsoft.com/en-us/learn/certifications/exams/az-303 => https://docs.microsoft.com/en-us/learn/paths/architect-network-infrastructure/
-
-<!-- postpone exam -->
+[here]
