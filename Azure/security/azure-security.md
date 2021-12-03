@@ -84,7 +84,8 @@ https://docs.microsoft.com/fr-fr/azure/role-based-access-control/built-in-roles#
 
 Assigment to a scope is done afterwards.
 
-We can also create an application in Azure to leverage active directory on own application <!-- did not explore this feature -->
+We can also create an application in Azure to leverage active directory on own application <!-- did not explore this feature -->.
+Here we have concept of app roles which seems different to roles (closer to permssion): https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps
 
 ## Implement Azure access and governance tools 
 
